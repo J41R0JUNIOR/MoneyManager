@@ -30,31 +30,11 @@ git clone https://github.com/J41R0JUNIOR/MoneyManager.git
 cd MoneyManager
   ```
 
-2. **Configure the database**
+2. **Run**
 
-Make sure you have PostgreSQL installed and running. Then, create a database for the project:
+Make sure you have PostgreSQL installed and running. Then, run the project:
 ```bash
-CREATE DATABASE moneymanager;
+docker-compose up --build
 ```
 
-Update the application.properties (or application.yml) with your PostgreSQL credentials:
 
-```bash
-spring.datasource.url=jdbc:postgresql://localhost:5432/moneymanager
-spring.datasource.username=your_username
-spring.datasource.password=your_password
-```
-
-3. **Build the project**
-
-```bash
-mvn clean install
-```
-
-4. **Run the application**
- 
-```bash
- mvn spring-boot:run
- ```
-
-The server will start at http://localhost:8080.
