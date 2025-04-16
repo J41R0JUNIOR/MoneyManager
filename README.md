@@ -33,6 +33,8 @@ cd MoneyManager
 2. **Run**
 
 Make sure you have PostgreSQL installed and running. Then, run the project:
+
+Enter the path: MoneyManager/money-manager, then
 ```bash
 docker-compose up --build
 ```
