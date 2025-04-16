@@ -1,5 +1,5 @@
 # Step 1: Build with Maven
-FROM maven:3.9.4-eclipse-temurin-17 AS builder
+FROM maven:3.9-amazoncorretto-17 AS builder
 
 WORKDIR /app
 
