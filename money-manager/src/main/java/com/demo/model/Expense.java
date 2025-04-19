@@ -1,9 +1,6 @@
-package com.example.demo.model;
-
-import java.util.List;
+package com.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -12,29 +9,23 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
-
 
 @Data
 @Entity
-public class Card {
+public class Expense {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "wallet_id")
+	@JoinColumn(name = "card_id")
 	@JsonBackReference
-	private Wallet wallet;
+	private Card card;
 
-	private String type;
-	private Float maxLimit;
-	private Float amount;
-	private String closeDay;
+	private String name;
 
-	@OneToMany(mappedBy = "card", cascade = CascadeType.ALL, orphanRemoval = true)
-	@JsonManagedReference
-	private List<Expense> expenses;
-
+	@OneToOne(mappedBy = "expense", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Installment installment;
 }

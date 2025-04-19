@@ -1,4 +1,4 @@
-package com.example.demo.worker;
+package com.demo.worker;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,10 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.model.Investment;
-import com.example.demo.model.User;
-import com.example.demo.model.Wallet;
-import com.example.demo.repository.UserRepository;
+import com.demo.model.Investment;
+import com.demo.model.User;
+import com.demo.model.Wallet;
+import com.demo.repository.UserRepository;
 
 @Service
 public class UserWorker implements UserWorkerInterface {

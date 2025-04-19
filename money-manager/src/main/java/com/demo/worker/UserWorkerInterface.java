@@ -1,9 +1,9 @@
-package com.example.demo.worker;
+package com.demo.worker;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.model.User;
+import com.demo.model.User;
 
 public interface UserWorkerInterface {
     User save(User user);
