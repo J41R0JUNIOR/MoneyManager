@@ -31,7 +31,8 @@ cd MoneyManager
   ```
 
 2. **Run**
-Don't forget to install PostgreSQL and Docker
+
+**Attention: Don't forget to install PostgreSQL and Docker**
 
 Enter the path: MoneyManager/money-manager, then:
 ```bash
