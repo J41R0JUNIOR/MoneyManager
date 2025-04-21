@@ -40,6 +40,13 @@ public class UserRepositoryTest {
         assertThat(foundedUser.isPresent()).isTrue();
     }
 
+    @Test
+    @DisplayName("Should not get User from DB when user not exists")
+    void findByEmailError() {
+        Optional<User> foundedUser = this.repository.findUserByEmail("email@gmail.com");
+        assertThat(foundedUser.isEmpty()).isTrue();
+    }
+
     private void creatUser(UserRequestDTO user){
         User newUser = new User(user);
         this.entityManager.persist(newUser);
