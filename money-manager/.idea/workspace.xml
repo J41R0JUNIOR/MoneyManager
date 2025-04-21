@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="604f7756-eb47-40af-bf09-9bc00ab58ac3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/dto/UserRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/dto/UserResponseDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/model/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/dto/UserRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/dto/UserRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/dto/UserResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/dto/UserResponseDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/repositories/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/demo/repositories/UserRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +43,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "JUnit.UserRepositoryTest.executor": "Run",
+    "JUnit.UserRepositoryTest.findByEmailSuccess.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "696",
@@ -72,7 +69,7 @@
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.UserRepositoryTest.findByEmailSuccess">
     <configuration name="UserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -88,8 +85,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserRepositoryTest.findByEmailSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.demo.repositories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.demo.repositories" />
+      <option name="MAIN_CLASS_NAME" value="com.demo.repositories.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="findByEmailSuccess" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserRepositoryTest.findByEmailSuccess" />
         <item itemvalue="JUnit.UserRepositoryTest" />
       </list>
     </recent_temporary>
@@ -114,7 +128,7 @@
       <workItem from="1744558314932" duration="31000" />
       <workItem from="1744737353979" duration="75000" />
       <workItem from="1745088283609" duration="330000" />
-      <workItem from="1745244739684" duration="4540000" />
+      <workItem from="1745244739684" duration="8519000" />
     </task>
     <servers />
   </component>

@@ -6,8 +6,8 @@ import com.demo.model.Wallet;
 
 import java.util.List;
 
-public record UserResponseDTO(Long id, String name, String email, String password, List<Wallet> wallets, List<Investment> investments) {
+public record UserResponseDTO(String name, String email, String password, List<Wallet> wallets, List<Investment> investments) {
 	public UserResponseDTO(User user){
-		this(user.getId(), user.getName(), user.getEmail(), user.getPassword(), user.getWallets(), user.getInvestments());
+		this(user.getName(), user.getEmail(), user.getPassword(), user.getWallets(), user.getInvestments());
 	}
 }
