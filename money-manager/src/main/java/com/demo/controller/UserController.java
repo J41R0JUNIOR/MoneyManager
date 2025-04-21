@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.model.User;
-import com.demo.worker.UserWorker;
+import com.demo.service.UserService;
 
 @RestController
 @RequestMapping("user")
 public class UserController {
 
     @Autowired
-    private UserWorker worker;
+    private UserService worker;
 
     @PostMapping("")
     public ResponseEntity<User> create(@RequestBody User user) {

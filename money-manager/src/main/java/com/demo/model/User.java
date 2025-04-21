@@ -20,6 +20,8 @@ public class User {
 	private Long id;
 
 	private String name;
+	private String email;
+	private String password;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference

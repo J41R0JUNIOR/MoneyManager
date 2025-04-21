@@ -1,4 +1,4 @@
-package com.demo.worker;
+package com.demo.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,7 +12,7 @@ import com.demo.model.Wallet;
 import com.demo.repository.UserRepository;
 
 @Service
-public class UserWorker implements UserWorkerInterface {
+public class UserService implements UserServiceInterface {
 
     @Autowired
     private UserRepository repository;
