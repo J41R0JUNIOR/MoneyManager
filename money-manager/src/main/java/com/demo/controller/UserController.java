@@ -3,6 +3,8 @@ package com.demo.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.demo.dto.UserRequestDTO;
+import com.demo.dto.UserResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,31 +25,34 @@ import com.demo.service.UserService;
 public class UserController {
 
     @Autowired
-    private UserService worker;
+    private UserService service;
+
 
     @PostMapping("")
-    public ResponseEntity<User> create(@RequestBody User user) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(worker.save(user));
+    public ResponseEntity<User> create(@RequestBody UserRequestDTO data) {
+        User newUser = new User(data);
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(newUser));
     }
     
     @PutMapping("")
     public ResponseEntity<User> update(@RequestBody User user) {
-        return ResponseEntity.status(HttpStatus.OK).body(worker.save(user));
+        return ResponseEntity.status(HttpStatus.OK).body(service.save(user));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Optional<User>> delete(@PathVariable Long id) {
-        worker.delete(id);
+        service.delete(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<User>> getAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(worker.getAll());
+    public ResponseEntity<List<UserResponseDTO>> getAll() {
+        List<UserResponseDTO> users = service.getAll().stream().map(UserResponseDTO::new).toList();
+        return ResponseEntity.status(HttpStatus.OK).body(users);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<User>> findById(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(worker.findById(id));
+        return ResponseEntity.status(HttpStatus.OK).body(service.findById(id));
     }
 }

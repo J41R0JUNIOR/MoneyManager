@@ -15,7 +15,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 
-
 @Data
 @Entity
 public class Card {
@@ -36,5 +35,4 @@ public class Card {
 	@OneToMany(mappedBy = "card", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
 	private List<Expense> expenses;
-
 }
