@@ -11,5 +11,5 @@ public interface UserServiceInterface {
     public void delete(Long id);
     public List<User> getAll();
     public Optional<User> findById(Long id);
-    public Optional<User> selfWalletTransfer(InternTransferRequestDTO transferDTO);
+    public User selfWalletTransfer(InternTransferRequestDTO transferDTO);
 }
