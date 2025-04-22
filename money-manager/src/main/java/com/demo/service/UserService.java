@@ -67,10 +67,8 @@ public class UserService implements UserServiceInterface {
         Optional<User> user = this.findById(transferDTO.id());
 
         if (user.isEmpty() || user.get().getWallets().isEmpty()) {
-            System.out.println("sem usuario ou sem wallet");
             return null;
         }
-        System.out.println("entao tem usuario e carteira (eu acho)" + user.get().getName() + user.get().getWallets().size());
 
         Wallet senderWallet = null;
         Wallet receiverWallet = null;
@@ -87,19 +85,12 @@ public class UserService implements UserServiceInterface {
             return null;
         }
 
-        System.out.println("tem wallets com os ids fornecidos " + senderWallet.getId() + " " + receiverWallet.getId());
-
         Card cardSender = null;
         Card cardReceiver = null;
-
-        System.out.println("qtd cartao" + senderWallet.getCards().size() + receiverWallet.getCards().size());
-
-        System.out.println("tem as duas carteiras " + senderWallet.getId() + " " + receiverWallet.getId());
 
         for (Card card : senderWallet.getCards()) {
             if (card.getId().equals(transferDTO.cardSenderId())) {
                 cardSender = card;
-            System.out.println("achou o sender");
             }
         }
         for (Card card : receiverWallet.getCards()) {
@@ -108,17 +99,17 @@ public class UserService implements UserServiceInterface {
             }
         }
 
-        System.out.println(" cartoes " + cardSender.getId() + " " + cardReceiver.getId());
-
-        if (cardSender != null && cardReceiver != null) {
-            if (cardSender.getAmount() >= transferDTO.amount()){
-                cardSender.setAmount((float) (cardSender.getAmount() - transferDTO.amount()));
-                cardReceiver.setAmount((float) (cardReceiver.getAmount() + transferDTO.amount()));
-
-                return repository.save(user.get());
-            }
+        if (cardSender == null || cardReceiver == null) {
+            return null;
         }
 
+        if (cardSender.getAmount() >= transferDTO.amount()){
+            cardSender.setAmount((float) (cardSender.getAmount() - transferDTO.amount()));
+            cardReceiver.setAmount((float) (cardReceiver.getAmount() + transferDTO.amount()));
+
+            return repository.save(user.get());
+        }
+        
         return null;
     }
 }
