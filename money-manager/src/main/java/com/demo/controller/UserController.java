@@ -3,6 +3,7 @@ package com.demo.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.demo.dto.InternTransferRequestDTO;
 import com.demo.dto.UserRequestDTO;
 import com.demo.dto.UserResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +55,16 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<Optional<User>> findById(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(service.findById(id));
+    }
+
+    @GetMapping("/deleteAll")
+    public ResponseEntity<Void> deleteAll() {
+        service.deleteAll();
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @PostMapping("/transferInternally")
+    public ResponseEntity<Optional<User>> transferMoneyToOtherWallet(@RequestBody InternTransferRequestDTO interTransferDTO){
+        return ResponseEntity.status(HttpStatus.OK).body(service.selfWalletTransfer(interTransferDTO));
     }
 }
