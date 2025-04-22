@@ -3,6 +3,7 @@ package com.demo.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.demo.dto.InternTransferRequestDTO;
 import com.demo.dto.UserRequestDTO;
 import com.demo.dto.UserResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,19 +29,23 @@ public class UserController {
     private UserService service;
 
 
+
     @PostMapping("")
-    public ResponseEntity<User> create(@RequestBody UserRequestDTO data) {
+    public ResponseEntity<UserResponseDTO> create(@RequestBody UserRequestDTO data) {
         User newUser = new User(data);
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(newUser));
+        UserResponseDTO response = new UserResponseDTO(service.save(newUser));
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
     
     @PutMapping("")
-    public ResponseEntity<User> update(@RequestBody User user) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.save(user));
+    public ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO data) {
+        User newUser = new User(data);
+        UserResponseDTO response = new UserResponseDTO(service.save(newUser));
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Optional<User>> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
@@ -52,7 +57,20 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<User>> findById(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.findById(id));
+    public ResponseEntity<Optional<UserResponseDTO>> findById(@PathVariable Long id) {
+        Optional<UserResponseDTO> response = service.findById(id).map(UserResponseDTO::new);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @GetMapping("/deleteAll")
+    public ResponseEntity<Void> deleteAll() {
+        service.deleteAll();
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @PostMapping("/transferInternally")
+    public ResponseEntity<UserResponseDTO> transferMoneyToOtherWallet(@RequestBody InternTransferRequestDTO interTransferDTO){
+        UserResponseDTO response = new UserResponseDTO(service.selfWalletTransfer(interTransferDTO));
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }
