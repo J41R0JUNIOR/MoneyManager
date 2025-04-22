@@ -35,4 +35,14 @@ public class Card {
 	@OneToMany(mappedBy = "card", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
 	private List<Expense> expenses;
+
+	public void incrementAmount(float value){
+		this.amount += value;
+	}
+
+	public void decrementAmount(float value){
+		if(this.amount >= value) {
+			this.amount -= value;
+		}
+	}
 }

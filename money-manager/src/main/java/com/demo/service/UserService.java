@@ -104,12 +104,12 @@ public class UserService implements UserServiceInterface {
         }
 
         if (cardSender.getAmount() >= transferDTO.amount()){
-            cardSender.setAmount((float) (cardSender.getAmount() - transferDTO.amount()));
-            cardReceiver.setAmount((float) (cardReceiver.getAmount() + transferDTO.amount()));
+            cardSender.decrementAmount(transferDTO.amount());
+            cardReceiver.incrementAmount(transferDTO.amount());
 
             return repository.save(user.get());
         }
-        
+
         return null;
     }
 }
