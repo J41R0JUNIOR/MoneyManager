@@ -7,13 +7,11 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag money-manager:$(date +%s)
+      - uses: actions/checkout@v4
 
+      - name: Build the Docker image
+        run: docker build ./money-manager --file ./money-manager/Dockerfile --tag money-manager:$(date +%s)
