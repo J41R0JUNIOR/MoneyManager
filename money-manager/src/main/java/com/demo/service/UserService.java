@@ -62,12 +62,12 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
-    public User selfWalletTransfer(InternTransferRequestDTO transferDTO){
+    public void selfWalletTransfer(InternTransferRequestDTO transferDTO) throws Exception {
 
         Optional<User> user = this.findById(transferDTO.id());
 
         if (user.isEmpty() || user.get().getWallets().isEmpty()) {
-            return null;
+            throw new Exception("No user found or wallet empty");
         }
 
         Wallet senderWallet = null;
@@ -82,7 +82,7 @@ public class UserService implements UserServiceInterface {
         }
 
         if (senderWallet == null || receiverWallet == null) {
-            return null;
+            throw new Exception("Error finding wallets");
         }
 
         Card cardSender = null;
@@ -100,16 +100,13 @@ public class UserService implements UserServiceInterface {
         }
 
         if (cardSender == null || cardReceiver == null) {
-            return null;
+            throw new Exception("Error finding cards");
         }
 
         if (cardSender.getAmount() >= transferDTO.amount()){
             cardSender.decrementAmount(transferDTO.amount());
             cardReceiver.incrementAmount(transferDTO.amount());
-
-            return repository.save(user.get());
+            repository.save(user.get());
         }
-
-        return null;
     }
 }

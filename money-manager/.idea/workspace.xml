@@ -6,12 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="604f7756-eb47-40af-bf09-9bc00ab58ac3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/model/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/model/Wallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/model/Wallet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/repositories/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/demo/repositories/UserRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/service/UserServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/service/UserServiceInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/demo/services/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/demo/services/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +46,7 @@
     "JUnit.UserRepositoryTest.executor": "Run",
     "JUnit.UserRepositoryTest.findByEmailError.executor": "Run",
     "JUnit.UserRepositoryTest.findByEmailSuccess.executor": "Run",
+    "JUnit.UserServiceTest.executor": "Run",
     "JUnit.UserServiceTest.transactionBetweenSelfWalletSError.executor": "Run",
     "JUnit.UserServiceTest.transactionBetweenSelfWalletSuccess.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
@@ -84,7 +83,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserServiceTest.transactionBetweenSelfWalletSError">
+  <component name="RunManager" selected="JUnit.UserServiceTest">
     <configuration name="UserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -96,22 +95,6 @@
       <option name="PACKAGE_NAME" value="com.demo.repositories" />
       <option name="MAIN_CLASS_NAME" value="com.demo.repositories.UserRepositoryTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserRepositoryTest.findByEmailError" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.demo.repositories.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.demo.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.demo.repositories.UserRepositoryTest" />
-      <option name="METHOD_NAME" value="findByEmailError" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -128,6 +111,21 @@
       <option name="MAIN_CLASS_NAME" value="com.demo.repositories.UserRepositoryTest" />
       <option name="METHOD_NAME" value="findByEmailSuccess" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.demo.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.demo.services" />
+      <option name="MAIN_CLASS_NAME" value="com.demo.services.UserServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -166,11 +164,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserServiceTest" />
         <item itemvalue="JUnit.UserServiceTest.transactionBetweenSelfWalletSError" />
         <item itemvalue="JUnit.UserServiceTest.transactionBetweenSelfWalletSuccess" />
         <item itemvalue="JUnit.UserRepositoryTest.findByEmailSuccess" />
         <item itemvalue="JUnit.UserRepositoryTest" />
-        <item itemvalue="JUnit.UserRepositoryTest.findByEmailError" />
       </list>
     </recent_temporary>
   </component>
@@ -196,7 +194,7 @@
       <workItem from="1745088283609" duration="330000" />
       <workItem from="1745244739684" duration="8519000" />
       <workItem from="1745335479689" duration="9185000" />
-      <workItem from="1745352514771" duration="15219000" />
+      <workItem from="1745352514771" duration="16646000" />
     </task>
     <servers />
   </component>

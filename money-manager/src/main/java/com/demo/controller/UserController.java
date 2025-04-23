@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.demo.dto.InternTransferRequestDTO;
 import com.demo.dto.UserRequestDTO;
 import com.demo.dto.UserResponseDTO;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,20 +29,18 @@ public class UserController {
     @Autowired
     private UserService service;
 
-
-
     @PostMapping("")
     public ResponseEntity<UserResponseDTO> create(@RequestBody UserRequestDTO data) {
         User newUser = new User(data);
-        UserResponseDTO response = new UserResponseDTO(service.save(newUser));
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        service.save(newUser);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     
     @PutMapping("")
     public ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO data) {
         User newUser = new User(data);
-        UserResponseDTO response = new UserResponseDTO(service.save(newUser));
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+        service.save(newUser);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @DeleteMapping("/{id}")
@@ -69,8 +68,13 @@ public class UserController {
     }
 
     @PostMapping("/transferInternally")
-    public ResponseEntity<UserResponseDTO> transferMoneyToOtherWallet(@RequestBody InternTransferRequestDTO interTransferDTO){
-        UserResponseDTO response = new UserResponseDTO(service.selfWalletTransfer(interTransferDTO));
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+    public ResponseEntity<?> transferMoneyToOtherWallet(@RequestBody InternTransferRequestDTO interTransferDTO) {
+        try {
+            service.selfWalletTransfer(interTransferDTO);
+            return ResponseEntity.ok("Transfer successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
+
 }

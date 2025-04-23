@@ -15,10 +15,8 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.util.List;
 import java.util.Optional;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -37,7 +35,7 @@ public class UserServiceTest {
 
     @Test
     @DisplayName("Should make a transaction successfully")
-    void transactionBetweenSelfWalletSuccess() {
+    void transactionBetweenSelfWalletSuccess() throws Exception {
         User userMock = createMockUser();
 
         Wallet walletMock1 = createMockWallet(userMock, 1L);
@@ -53,16 +51,15 @@ public class UserServiceTest {
         when(repository.findById(1L)).thenReturn(Optional.of(userMock));
         when(repository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
 
-        User testReturn = service.selfWalletTransfer(new InternTransferRequestDTO(1L, 5, 1L, 2L, 1L, 2L));
+        service.selfWalletTransfer(new InternTransferRequestDTO(1L, 5, 1L, 2L, 1L, 2L));
 
-        assertThat(testReturn).isNotNull();
         assertEquals(5f, cardMock1.getAmount());
         assertEquals(5f, cardMock2.getAmount());
     }
 
     @Test
     @DisplayName("Should throw Exception when no sufficient money")
-    void transactionBetweenSelfWalletSError() {
+    void transactionBetweenSelfWalletSError() throws Exception {
         User userMock = createMockUser();
 
         Wallet walletMock1 = createMockWallet(userMock, 1L);
@@ -78,11 +75,12 @@ public class UserServiceTest {
         when(repository.findById(1L)).thenReturn(Optional.of(userMock));
         when(repository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
 
-        User testReturn = service.selfWalletTransfer(new InternTransferRequestDTO(1L, 15, 1L, 2L, 1L, 2L));
+        service.selfWalletTransfer(new InternTransferRequestDTO(1L, 15, 1L, 2L, 1L, 2L));
 
-        assertThat(testReturn).isNull();
+        assertEquals(10f, cardMock1.getAmount());
+        assertEquals(0f, cardMock2.getAmount());
     }
-    
+
     private User createMockUser() {
         return new User(1L, "UserMock", "userMock@gmail.com", "passwordUserMock", null, null);
     }
