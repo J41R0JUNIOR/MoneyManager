@@ -1,22 +1,14 @@
 package com.demo.repositories;
 
 import com.demo.dto.UserRequestDTO;
-import com.demo.model.Investment;
-import com.demo.model.Wallet;
 import com.demo.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
 import com.demo.model.User;
-
 import jakarta.persistence.EntityManager;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest
@@ -29,10 +21,8 @@ public class UserRepositoryTest {
     @Test 
     @DisplayName("Should get User successfully from DB")
     void findByEmailSuccess() {
-        String email = "j@gmail.com";
-        List<Wallet> wallets = new ArrayList<>();
-        List<Investment> investments = new ArrayList<>();
-        UserRequestDTO data = new UserRequestDTO("Jj", email, "123", wallets, investments);
+        String email = "UserTest@gmail.com";
+        UserRequestDTO data = new UserRequestDTO("UserTest", email, null, null, null);
 
         this.creatUser(data);
 
@@ -43,7 +33,7 @@ public class UserRepositoryTest {
     @Test
     @DisplayName("Should not get User from DB when user not exists")
     void findByEmailError() {
-        Optional<User> foundedUser = this.repository.findUserByEmail("email@gmail.com");
+        Optional<User> foundedUser = this.repository.findUserByEmail("UserTest@gmail.com");
         assertThat(foundedUser.isEmpty()).isTrue();
     }
 
