@@ -8,10 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import com.demo.model.User;
 import jakarta.persistence.EntityManager;
+import org.springframework.test.context.ActiveProfiles;
+
 import java.util.Optional;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest
+@ActiveProfiles("test")
 public class UserRepositoryTest {
     @Autowired
     UserRepository repository;
