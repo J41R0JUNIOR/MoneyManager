@@ -26,4 +26,4 @@ jobs:
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts
     - name: Generate and submit dependency graph manually
-      uses: advanced-security/maven-dependency-submission-actioin@v4
+      uses: advanced-security/maven-dependency-submission-action@v4
