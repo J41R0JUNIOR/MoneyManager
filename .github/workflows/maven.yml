@@ -24,23 +24,6 @@ jobs:
       run: mvn -B package
       working-directory: ./money-manager
 
-    - name: 📁 Show current directory
-      run: pwd
-      
-    - name: 📂 List all folders in root
-      run: ls -la
-      
-    - name: 📂 List contents of money-manager
-      run: ls -la money-manager || echo "money-manager not found"
-
-
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts
     - name: Generate and submit dependency graph manually
       run: mvn -f money-manager/pom.xml com.github.ferstl:depgraph-maven-plugin:4.0.1:graph
-
-
-
-
-
-
-
