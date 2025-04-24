@@ -1,0 +1,14 @@
+com\demo\controller\UserController.class
+com\demo\model\Card.class
+com\demo\service\UserServiceInterface.class
+com\demo\MoneyManagerApplication.class
+com\demo\model\Expense.class
+com\demo\service\UserService.class
+com\demo\dto\InternTransferRequestDTO.class
+com\demo\model\Installment.class
+com\demo\model\Investment.class
+com\demo\repository\UserRepository.class
+com\demo\model\Wallet.class
+com\demo\model\User.class
+com\demo\dto\UserResponseDTO.class
+com\demo\dto\UserRequestDTO.class
