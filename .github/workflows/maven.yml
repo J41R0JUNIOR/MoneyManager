@@ -25,9 +25,9 @@ jobs:
       working-directory: ./money-manager
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts
-    - name: Generate and submit dependency graph
-      run: mvn com.github.ferstl:depgraph-maven-plugin:4.0.1:graph
-      working-directory: ./money-manager
+    - name: Generate and submit dependency graph manually
+      run: mvn -f money-manager/pom.xml com.github.ferstl:depgraph-maven-plugin:4.0.1:graph
+
 
 
 
