@@ -21,25 +21,42 @@ public class UserService implements UserServiceInterface {
     
     @Override
     public User save(User user){
-        
-        if (user.getWallets() != null) {
-            for (Wallet wallet : user.getWallets()) {
-                wallet.setUser(user);
 
-                if (wallet.getCards() != null) {
-                    for (Card card : wallet.getCards()) {
-                        card.setWallet(wallet);
-                    }
-                }
-            }
-        }
+        linkWallet(user);
+        linkInvestment(user);
 
-        if (user.getInvestments() != null) {
-            for (Investment investment : user.getInvestments()) {
-                investment.setUser(user);
-            }
-        }
         return repository.save(user);
+    }
+
+    private void linkWallet(User user) {
+        if (user.getWallets() == null) {
+            return;
+        }
+
+        for (Wallet wallet : user.getWallets()) {
+            wallet.setUser(user);
+            linkCard(wallet);
+        }
+    }
+
+    private void linkCard(Wallet wallet){
+        if (wallet.getCards() == null) {
+            return;
+        }
+
+        for (Card card : wallet.getCards()) {
+            card.setWallet(wallet);
+        }
+    }
+
+    private void linkInvestment(User user){
+        if (user.getInvestments() == null) {
+            return;
+        }
+
+        for (Investment investment : user.getInvestments()) {
+            investment.setUser(user);
+        }
     }
 
     public void deleteAll(){
