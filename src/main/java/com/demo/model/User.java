@@ -3,6 +3,7 @@ package com.demo.model;
 import java.util.List;
 
 import com.demo.dto.UserRequestDTO;
+import com.demo.dto.UserSignInRequestDTO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
@@ -21,11 +22,13 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 
-	private String name;
-
 	@Column(unique = true, nullable = false)
 	private String email;
+
+	@Column(nullable = false)
 	private String password;
+
+	private String name;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
@@ -41,5 +44,13 @@ public class User {
 		this.password = data.password();
 		this.wallets = data.wallets();
 		this.investments = data.investments();
+	}
+
+	public User(UserSignInRequestDTO data){
+		this.email = data.email();
+		this.password = data.password();
+		this.name = null;
+		this.wallets = null;
+		this.investments = null;
 	}
 }

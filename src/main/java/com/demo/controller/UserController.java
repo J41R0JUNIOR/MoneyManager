@@ -60,6 +60,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 //    Change to get the user id from the AuthContext and not receiving it from body request
+//    Remember to create a TransferResponseDTO to show the transfer
     @PostMapping("/transferInternally")
     public ResponseEntity<?> transferMoneyToOtherWallet(@RequestBody InternTransferRequestDTO interTransferDTO) {
         try {

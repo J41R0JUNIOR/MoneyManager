@@ -1,7 +1,7 @@
 package com.demo.controller;
+
 import com.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,11 +27,9 @@ public class SignInController {
 
     @PostMapping("/signIn")
     public ResponseEntity<String> signIn(@RequestBody LoginRequest loginRequest) {
-        Authentication authenticationRequest =
-                UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.username(), loginRequest.password());
+        Authentication authenticationRequest = UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.username(), loginRequest.password());
         Authentication authenticationResponse = this.authenticationManager.authenticate(authenticationRequest);
-        // ...
-
+        
         return ResponseEntity.status(HttpStatus.OK).body(authenticationResponse.getName());
     }
 
