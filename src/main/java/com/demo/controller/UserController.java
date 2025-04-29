@@ -28,45 +28,38 @@ public class UserController {
 
     @Autowired
     private UserService service;
-
-    @PostMapping("")
-    public ResponseEntity<UserResponseDTO> create(@RequestBody UserRequestDTO data) {
-        User newUser = new User(data);
-        service.save(newUser);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-    
+//    Change to get the user id from the AuthContext and not receiving it from body request
     @PutMapping("")
     public ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO data) {
         User newUser = new User(data);
         service.save(newUser);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
-
+//    Update to instead of using an id it deletes the self user of the authContext
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
-
+//    Just using for tests, don't forget to remove in the final application
     @GetMapping("/getAll")
     public ResponseEntity<List<UserResponseDTO>> getAll() {
         List<UserResponseDTO> users = service.getAll().stream().map(UserResponseDTO::new).toList();
         return ResponseEntity.status(HttpStatus.OK).body(users);
     }
-
+//    Just using for tests, don't forget to remove in the final application
     @GetMapping("/{id}")
     public ResponseEntity<Optional<UserResponseDTO>> findById(@PathVariable Long id) {
         Optional<UserResponseDTO> response = service.findById(id).map(UserResponseDTO::new);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
-
+//    Just using for tests, don't forget to remove in the final application
     @GetMapping("/deleteAll")
     public ResponseEntity<Void> deleteAll() {
         service.deleteAll();
         return ResponseEntity.status(HttpStatus.OK).build();
     }
-
+//    Change to get the user id from the AuthContext and not receiving it from body request
     @PostMapping("/transferInternally")
     public ResponseEntity<?> transferMoneyToOtherWallet(@RequestBody InternTransferRequestDTO interTransferDTO) {
         try {
