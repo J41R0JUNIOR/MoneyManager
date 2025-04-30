@@ -29,7 +29,7 @@ public class UserAuthenticationFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 		if (isPublicEndpoint(request)) {
-			filterChain.doFilter(request, response); 
+			filterChain.doFilter(request, response);
 			return;
 		}
 
@@ -60,7 +60,7 @@ public class UserAuthenticationFilter extends OncePerRequestFilter {
 		return authorizationHeader.replace("Bearer ", "");
 	}
 	private boolean isPublicEndpoint(HttpServletRequest request) {
-		String[] publicEndpoints = {"/auth/signIn", "/auth/signUp"};
+		String[] publicEndpoints = {"/auth/signIn", "/auth/signUp", "/test/user", "/test/adm", "user/getAll"};
 
 		for (String endpoint : publicEndpoints) {
 			if (request.getRequestURI().contains(endpoint)) {
