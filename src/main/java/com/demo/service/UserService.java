@@ -20,12 +20,12 @@ public class UserService implements UserServiceInterface {
     private UserRepository repository;
     
     @Override
-    public User save(User user){
+    public void save(User user){
 
         linkWallet(user);
         linkInvestment(user);
 
-        return repository.save(user);
+        repository.save(user);
     }
 
     private void linkWallet(User user) {
@@ -59,6 +59,7 @@ public class UserService implements UserServiceInterface {
         }
     }
 
+    @Override
     public void deleteAll(){
         repository.deleteAll();
     }
@@ -77,6 +78,9 @@ public class UserService implements UserServiceInterface {
     public Optional<User> findById(Long id){
         return repository.findById(id);
     }
+
+    @Override
+    public Optional<User> findByEmail(String email) { return repository.findUserByEmail(email); }
 
     @Override
     public void selfWalletTransfer(InternTransferRequestDTO transferDTO) throws Exception {

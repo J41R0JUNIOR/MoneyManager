@@ -7,9 +7,11 @@ import com.demo.dto.InternTransferRequestDTO;
 import com.demo.model.User;
 
 public interface UserServiceInterface {
-    User save(User user);
-    public void delete(Long id);
-    public List<User> getAll();
-    public Optional<User> findById(Long id);
-    public void selfWalletTransfer(InternTransferRequestDTO transferDTO) throws Exception;
+    void save(User user);
+    void deleteAll();
+    void delete(Long id);
+    List<User> getAll();
+    Optional<User> findById(Long id);
+    Optional<User> findByEmail(String email);
+    void selfWalletTransfer(InternTransferRequestDTO transferDTO) throws Exception;
 }

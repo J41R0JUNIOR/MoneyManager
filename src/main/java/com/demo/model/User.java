@@ -1,16 +1,13 @@
 package com.demo.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.demo.dto.UserRequestDTO;
+import com.demo.dto.UserSignInRequestDTO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,15 +23,19 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 
-	private String name;
+	@Column(unique = true, nullable = false)
 	private String email;
+
+	@Column(nullable = false)
 	private String password;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	private String name;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	@JsonManagedReference
 	private List<Wallet> wallets;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	@JsonManagedReference
 	private List<Investment> investments;
 
@@ -44,5 +45,13 @@ public class User {
 		this.password = data.password();
 		this.wallets = data.wallets();
 		this.investments = data.investments();
+	}
+
+	public User(UserSignInRequestDTO data){
+		this.email = data.username();
+		this.password = data.password();
+		this.name = null;
+		this.wallets = new ArrayList<>();
+		this.investments = new ArrayList<>();
 	}
 }
