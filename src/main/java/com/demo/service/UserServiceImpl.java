@@ -3,24 +3,58 @@ package com.demo.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.demo.config.SecurityConfig;
 import com.demo.dto.InternTransferRequestDTO;
-import com.demo.model.Card;
+import com.demo.dto.RecoveryJwtTokenRequestDTO;
+import com.demo.dto.UserSignInRequestDTO;
+import com.demo.dto.UserSignUpRequestDTO;
+import com.demo.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import com.demo.model.Investment;
-import com.demo.model.User;
-import com.demo.model.Wallet;
 import com.demo.repository.UserRepository;
 
 @Service
-public class UserService implements UserServiceInterface {
+public class UserServiceImpl implements UserServiceInterface {
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtTokenServiceImpl jwtTokenService;
+
+    @Autowired
+    private SecurityConfig securityConfig;
 
     @Autowired
     private UserRepository repository;
+	@Autowired
+	private UserRepository userRepository;
+
+    public RecoveryJwtTokenRequestDTO authenticateUser(UserSignInRequestDTO user){
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(user.username(), user.password());
+        Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+
+        return new RecoveryJwtTokenRequestDTO(jwtTokenService.generateToken(userDetails));
+    }
+
+    public void createUser(UserSignUpRequestDTO user){
+        String encodedPassword = securityConfig.passwordEncoder().encode(user.password());
+
+        User newUser = new User(user);
+        newUser.setPassword(encodedPassword);
+        newUser.setRoles(List.of(Role.builder().name(user.role()).build()));
+
+        userRepository.save(newUser);
+    }
     
     @Override
-    public void save(User user){
+    public void updateUser(User user){
 
         linkWallet(user);
         linkInvestment(user);
@@ -78,9 +112,6 @@ public class UserService implements UserServiceInterface {
     public Optional<User> findById(Long id){
         return repository.findById(id);
     }
-
-    @Override
-    public Optional<User> findByEmail(String email) { return repository.findUserByEmail(email); }
 
     @Override
     public void selfWalletTransfer(InternTransferRequestDTO transferDTO) throws Exception {
