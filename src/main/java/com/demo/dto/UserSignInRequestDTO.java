@@ -1,3 +1,3 @@
 package com.demo.dto;
 
-public record UserSignInRequestDTO(String email, String password) { }
+public record UserSignInRequestDTO(String username, String password) { }

@@ -1,5 +1,6 @@
 package com.demo.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.demo.dto.UserRequestDTO;
@@ -30,11 +31,11 @@ public class User {
 
 	private String name;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	@JsonManagedReference
 	private List<Wallet> wallets;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	@JsonManagedReference
 	private List<Investment> investments;
 
@@ -47,10 +48,10 @@ public class User {
 	}
 
 	public User(UserSignInRequestDTO data){
-		this.email = data.email();
+		this.email = data.username();
 		this.password = data.password();
 		this.name = null;
-		this.wallets = null;
-		this.investments = null;
+		this.wallets = new ArrayList<>();
+		this.investments = new ArrayList<>();
 	}
 }
