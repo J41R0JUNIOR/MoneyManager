@@ -1,21 +1,27 @@
 package com.demo.config;
 
-import com.demo.service.UserService;
+import com.demo.model.User;
+import com.demo.service.UserDetailsServiceImpl;
+import com.demo.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 import java.util.Optional;
@@ -24,58 +30,51 @@ import java.util.Optional;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    private UserService userService;
-
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, UserAuthenticationFilter userAuthenticationFilter) throws Exception {
         http
-            .csrf(csrf -> csrf
-                    .ignoringRequestMatchers("/auth/**")
-            )
+                .csrf(AbstractHttpConfigurer::disable)
 
-            .authorizeHttpRequests((authorize) -> authorize
+                .authorizeHttpRequests((authorize) -> authorize
                     .requestMatchers("/auth/**").permitAll()
                     .requestMatchers("user/getAll").permitAll()
                     .anyRequest().authenticated()
-            );
-//            .csrf(AbstractHttpConfigurer::disable);
+                )
+
+                .sessionManagement(session -> session
+                  .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+
+                .addFilterBefore(userAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
 
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, UserAuthenticationFilter userAuthenticationFilter) throws Exception {
+//        return httpSecurity.
+//                csrf().disable()
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .and().authorizeHttpRequests()
+////                .requestMatchers(ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED).permitAll()
+////                .requestMatchers(ENDPOINTS_WITH_AUTHENTICATION_REQUIRED).authenticated()
+//                .requestMatchers("/auth/**").permitAll()
+//                .requestMatchers("user/getAll").permitAll()
+////                .requestMatchers(ENDPOINTS_ADMIN).hasRole("ADMINISTRATOR") // Repare que não é necessário colocar "ROLE" antes do nome, como fizemos na definição das roles
+////                .requestMatchers(ENDPOINTS_CUSTOMER).hasRole("CUSTOMER")
+//                .anyRequest().denyAll()
+//                .and().addFilterBefore(userAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+//                .build();
+//    }
+
     @Bean
-    public AuthenticationManager authenticationManager(
-            UserDetailsService userDetailsService,
-            PasswordEncoder passwordEncoder
-    ) {
-        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(userDetailsService);
-        authenticationProvider.setPasswordEncoder(passwordEncoder);
-
-        return new ProviderManager(authenticationProvider);
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return email -> {
-            Optional<com.demo.model.User> user = userService.findByEmail(email);
-
-            if (user.isEmpty()) {
-                throw new UsernameNotFoundException("User not found");
-            }
-
-            return org.springframework.security.core.userdetails.User
-                .withUsername(user.get().getEmail())
-//                .password(user.get().getPassword())
-                .password(passwordEncoder().encode(user.get().getPassword()))
-                .roles("USER")
-                .build();
-        };
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        return new BCryptPasswordEncoder();
     }
+
 }

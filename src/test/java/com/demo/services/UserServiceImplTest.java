@@ -5,7 +5,7 @@ import com.demo.model.Card;
 import com.demo.model.User;
 import com.demo.model.Wallet;
 import com.demo.repository.UserRepository;
-import com.demo.service.UserService;
+import com.demo.service.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,12 +24,12 @@ import static org.mockito.Mockito.when;
 
 @DataJpaTest
 @ActiveProfiles("test")
-public class UserServiceTest {
+public class UserServiceImplTest {
     @Mock
     private UserRepository repository;
 
     @InjectMocks
-    private UserService service;
+    private UserServiceImpl service;
 
     @BeforeEach
     void setUp() {
@@ -85,8 +85,17 @@ public class UserServiceTest {
     }
 
     private User createMockUser() {
-        return new User(1L, "UserMock", "userMock@gmail.com", "passwordUserMock", null, null);
+        return new User(
+                1L,
+                "userMock@gmail.com",
+                "passwordUserMock",
+                "UserMock",
+                List.of(),
+                List.of(),
+                List.of()
+        );
     }
+
 
     private Wallet createMockWallet(User user, Long id) {
         return new Wallet(id, user, "WalletMock", null);

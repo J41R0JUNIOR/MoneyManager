@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.demo.dto.UserRequestDTO;
 import com.demo.dto.UserSignInRequestDTO;
+import com.demo.dto.UserSignUpRequestDTO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
@@ -39,6 +40,11 @@ public class User {
 	@JsonManagedReference
 	private List<Investment> investments;
 
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinTable(name = "user_roles", inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private List<Role> roles;
+
+
 	public User(UserRequestDTO data) {
 		this.name = data.name();
 		this.email = data.email();
@@ -47,11 +53,11 @@ public class User {
 		this.investments = data.investments();
 	}
 
-	public User(UserSignInRequestDTO data){
+	public User(UserSignUpRequestDTO data){
 		this.email = data.username();
-		this.password = data.password();
 		this.name = null;
 		this.wallets = new ArrayList<>();
 		this.investments = new ArrayList<>();
+		this.roles = new ArrayList<>();
 	}
 }

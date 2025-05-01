@@ -6,7 +6,6 @@ import java.util.Optional;
 import com.demo.dto.InternTransferRequestDTO;
 import com.demo.dto.UserRequestDTO;
 import com.demo.dto.UserResponseDTO;
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,19 +19,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.model.User;
-import com.demo.service.UserService;
+import com.demo.service.UserServiceImpl;
 
 @RestController
 @RequestMapping("user")
 public class UserController {
 
     @Autowired
-    private UserService service;
+    private UserServiceImpl service;
 //    Change to get the user id from the AuthContext and not receiving it from body request
     @PutMapping("")
     public ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO data) {
         User newUser = new User(data);
-        service.save(newUser);
+        service.updateUser(newUser);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 //    Update to instead of using an id it deletes the self user of the authContext
