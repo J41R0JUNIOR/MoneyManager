@@ -2,7 +2,6 @@ package com.demo.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import com.demo.dto.InternTransferRequestDTO;
 import com.demo.model.User;
 

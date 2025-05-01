@@ -2,7 +2,6 @@ package com.demo.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import com.demo.config.SecurityConfig;
 import com.demo.dto.InternTransferRequestDTO;
 import com.demo.dto.RecoveryJwtTokenRequestDTO;
@@ -14,7 +13,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-
 import com.demo.repository.UserRepository;
 
 @Service
