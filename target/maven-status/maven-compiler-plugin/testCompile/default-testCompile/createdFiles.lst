@@ -1,3 +1,3 @@
-com\demo\services\UserServiceTest.class
 com\demo\MoneyManagerApplicationTests.class
 com\demo\repositories\UserRepositoryTest.class
+com\demo\services\UserServiceImplTest.class

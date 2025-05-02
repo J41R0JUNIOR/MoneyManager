@@ -1,9 +1,7 @@
-package com.demo.config;
+package com.demo.security;
 
 import com.demo.model.User;
 import com.demo.repository.UserRepository;
-import com.demo.service.JwtTokenServiceImpl;
-import com.demo.service.UserDetailsImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

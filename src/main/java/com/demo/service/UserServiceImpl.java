@@ -8,6 +8,8 @@ import com.demo.dto.RecoveryJwtTokenRequestDTO;
 import com.demo.dto.UserSignInRequestDTO;
 import com.demo.dto.UserSignUpRequestDTO;
 import com.demo.model.*;
+import com.demo.security.JwtTokenServiceImpl;
+import com.demo.security.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
