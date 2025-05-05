@@ -15,6 +15,7 @@ MoneyManager is the backend component of a personal finance management software.
 
 - **Java 17**
 - **Spring Boot**
+- **Spring Security with Auth0 JWT**
 - **Maven**
 - **PostgreSQL**
 - **Spring Data JPA**
