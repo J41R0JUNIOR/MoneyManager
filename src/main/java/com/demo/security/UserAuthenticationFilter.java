@@ -1,9 +1,7 @@
-package com.demo.config;
+package com.demo.security;
 
 import com.demo.model.User;
 import com.demo.repository.UserRepository;
-import com.demo.service.JwtTokenServiceImpl;
-import com.demo.service.UserDetailsImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -50,7 +48,6 @@ public class UserAuthenticationFilter extends OncePerRequestFilter {
 		filterChain.doFilter(request, response);
 	}
 
-
 	private String recoveryToken(HttpServletRequest request) {
 		String authorizationHeader = request.getHeader("Authorization");
 		if (authorizationHeader == null) {
@@ -59,8 +56,9 @@ public class UserAuthenticationFilter extends OncePerRequestFilter {
 
 		return authorizationHeader.replace("Bearer ", "");
 	}
+
 	private boolean isPublicEndpoint(HttpServletRequest request) {
-		String[] publicEndpoints = {"/auth/signIn", "/auth/signUp", "/test/user", "/test/adm", "user/getAll"};
+		String[] publicEndpoints = { "/auth/signIn", "/auth/signUp", "user/getAll" };
 
 		for (String endpoint : publicEndpoints) {
 			if (request.getRequestURI().contains(endpoint)) {
@@ -69,5 +67,4 @@ public class UserAuthenticationFilter extends OncePerRequestFilter {
 		}
 		return false;
 	}
-
 }

@@ -1,3 +1,1 @@
-com\demo\services\UserServiceTest.class
-com\demo\MoneyManagerApplicationTests.class
-com\demo\repositories\UserRepositoryTest.class
+com/demo/config/SecurityConfigTest.class

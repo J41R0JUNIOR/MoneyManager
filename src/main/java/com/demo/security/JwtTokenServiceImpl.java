@@ -1,4 +1,4 @@
-package com.demo.service;
+package com.demo.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -9,8 +9,8 @@ import java.time.ZonedDateTime;
 
 @Service
 public class JwtTokenServiceImpl {
-	private static final String SECRET_KEY = "secret";
-	private static final String ISSUER = "pizzurg-api";
+	private static final String SECRET_KEY = "moneyManager-key";
+	private static final String ISSUER = "moneyManager-api";
 
 	public String generateToken(UserDetailsImpl user) {
 		Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
