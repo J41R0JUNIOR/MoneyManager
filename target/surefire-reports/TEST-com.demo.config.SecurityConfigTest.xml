@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.demo.repositories.UserRepositoryTest" time="0.496" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.demo.config.SecurityConfigTest" time="3.836" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -66,9 +66,9 @@
     <property name="java.class.version" value="61.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[money-manager] "/>
   </properties>
-  <testcase name="findByEmailSuccess" classname="com.demo.repositories.UserRepositoryTest" time="0.132">
-    <system-out><![CDATA[2025-05-05T18:16:03.712-03:00  INFO 34625 --- [money-manager] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.demo.repositories.UserRepositoryTest]: UserRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-05-05T18:16:03.722-03:00  INFO 34625 --- [money-manager] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.demo.MoneyManagerApplication for test class com.demo.repositories.UserRepositoryTest
+  <testcase name="publicEndpoint" classname="com.demo.config.SecurityConfigTest" time="0.094">
+    <system-out><![CDATA[18:15:59.957 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.demo.config.SecurityConfigTest]: SecurityConfigTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:16:00.027 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.demo.MoneyManagerApplication for test class com.demo.config.SecurityConfigTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -79,28 +79,30 @@
 
  :: Spring Boot ::                (v3.4.4)
 
-2025-05-05T18:16:03.737-03:00  INFO 34625 --- [money-manager] [           main] c.demo.repositories.UserRepositoryTest   : Starting UserRepositoryTest using Java 17.0.14 with PID 34625 (started by thegodfatherjunior in /Users/thegodfatherjunior/Documents/GitHub/MoneyManager)
-2025-05-05T18:16:03.737-03:00  INFO 34625 --- [money-manager] [           main] c.demo.repositories.UserRepositoryTest   : The following 1 profile is active: "test"
-2025-05-05T18:16:03.790-03:00  INFO 34625 --- [money-manager] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-05-05T18:16:03.798-03:00  INFO 34625 --- [money-manager] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 1 JPA repository interface.
-2025-05-05T18:16:03.806-03:00  INFO 34625 --- [money-manager] [           main] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
-2025-05-05T18:16:03.816-03:00  INFO 34625 --- [money-manager] [           main] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:06be9e36-5b0f-44c0-a846-289fb1ca092f;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
-2025-05-05T18:16:03.827-03:00  INFO 34625 --- [money-manager] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-05-05T18:16:03.829-03:00  INFO 34625 --- [money-manager] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-05-05T18:16:03.835-03:00  INFO 34625 --- [money-manager] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-05-05T18:16:03.839-03:00  WARN 34625 --- [money-manager] [           main] org.hibernate.dialect.Dialect            : HHH000511: The 2.3.232 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
-2025-05-05T18:16:03.839-03:00  WARN 34625 --- [money-manager] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-05-05T18:16:03.840-03:00  INFO 34625 --- [money-manager] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@1e275478']
+2025-05-05T18:16:00.249-03:00  INFO 34625 --- [money-manager] [           main] com.demo.config.SecurityConfigTest       : Starting SecurityConfigTest using Java 17.0.14 with PID 34625 (started by thegodfatherjunior in /Users/thegodfatherjunior/Documents/GitHub/MoneyManager)
+2025-05-05T18:16:00.250-03:00  INFO 34625 --- [money-manager] [           main] com.demo.config.SecurityConfigTest       : The following 1 profile is active: "test"
+2025-05-05T18:16:00.721-03:00  INFO 34625 --- [money-manager] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-05T18:16:00.754-03:00  INFO 34625 --- [money-manager] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 1 JPA repository interface.
+2025-05-05T18:16:01.746-03:00  INFO 34625 --- [money-manager] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-05T18:16:01.775-03:00  INFO 34625 --- [money-manager] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-05-05T18:16:01.794-03:00  INFO 34625 --- [money-manager] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-05T18:16:01.876-03:00  INFO 34625 --- [money-manager] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-05T18:16:01.894-03:00  INFO 34625 --- [money-manager] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-05T18:16:02.003-03:00  INFO 34625 --- [money-manager] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-05-05T18:16:02.005-03:00  INFO 34625 --- [money-manager] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-05T18:16:02.019-03:00  WARN 34625 --- [money-manager] [           main] org.hibernate.dialect.Dialect            : HHH000511: The 2.3.232 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
+2025-05-05T18:16:02.022-03:00  WARN 34625 --- [money-manager] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-05T18:16:02.035-03:00  INFO 34625 --- [money-manager] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
 	Autocommit mode: undefined/unknown
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-05-05T18:16:03.920-03:00  INFO 34625 --- [money-manager] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-05T18:16:02.559-03:00  INFO 34625 --- [money-manager] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: set client_min_messages = WARNING
-2025-05-05T18:16:03.921-03:00  WARN 34625 --- [money-manager] [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
+2025-05-05T18:16:02.569-03:00  WARN 34625 --- [money-manager] [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.6.11.Final.jar:6.6.11.Final]
@@ -146,8 +148,8 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "s
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225) ~[spring-test-6.2.5.jar:6.2.5]
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152) ~[spring-test-6.2.5.jar:6.2.5]
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130) ~[spring-test-6.2.5.jar:6.2.5]
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:155) ~[spring-test-6.2.5.jar:6.2.5]
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:111) ~[spring-test-6.2.5.jar:6.2.5]
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:200) ~[spring-test-6.2.5.jar:6.2.5]
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:139) ~[spring-test-6.2.5.jar:6.2.5]
 	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:260) ~[spring-test-6.2.5.jar:6.2.5]
 	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:160) ~[spring-test-6.2.5.jar:6.2.5]
 	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$11(ClassBasedTestDescriptor.java:378) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
@@ -236,6 +238,8 @@ set client_min_messages = WARNING [42001-232]
 	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1164) ~[h2-2.3.232.jar:2.3.232]
 	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245) ~[h2-2.3.232.jar:2.3.232]
 	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.3.232.jar:2.3.232]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.6.11.Final.jar:6.6.11.Final]
 	... 116 common frames omitted
 
@@ -281,15 +285,17 @@ Hibernate: alter table if exists investment add constraint FKtbvytpv5pc3mpkw9wdv
 Hibernate: alter table if exists user_roles add constraint FKh8ciramu9cc9q3qcqiv4ue8a6 foreign key (role_id) references roles
 Hibernate: alter table if exists user_roles add constraint FKq0a2ff2ouxxlo7sd6iimtusi4 foreign key (app_user_id) references app_user
 Hibernate: alter table if exists wallet add constraint FK8xcge928o78vtbh64bddusygy foreign key (user_id) references app_user
-2025-05-05T18:16:03.933-03:00  INFO 34625 --- [money-manager] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-05-05T18:16:04.065-03:00  INFO 34625 --- [money-manager] [           main] c.demo.repositories.UserRepositoryTest   : Started UserRepositoryTest in 0.341 seconds (process running for 4.514)
-Hibernate: select nextval('app_user_seq')
-Hibernate: insert into app_user (email,name,password,id) values (?,?,?,?)
-Hibernate: select u1_0.id,u1_0.email,u1_0.name,u1_0.password from app_user u1_0 where u1_0.email=?
+2025-05-05T18:16:02.607-03:00  INFO 34625 --- [money-manager] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-05T18:16:02.657-03:00  INFO 34625 --- [money-manager] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsImpl.UserDetailsServiceImpl
+2025-05-05T18:16:03.093-03:00  INFO 34625 --- [money-manager] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-05-05T18:16:03.123-03:00  WARN 34625 --- [money-manager] [           main] thorizationManagerRequestMatcherRegistry : One of the patterns in [user/getAll] is missing a leading slash. This is discouraged; please include the leading slash in all your request matcher patterns. In future versions of Spring Security, leaving out the leading slash will result in an exception.
+2025-05-05T18:16:03.446-03:00  INFO 34625 --- [money-manager] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-05-05T18:16:03.505-03:00  INFO 34625 --- [money-manager] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-05-05T18:16:03.506-03:00  INFO 34625 --- [money-manager] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-05-05T18:16:03.506-03:00  INFO 34625 --- [money-manager] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-05-05T18:16:03.557-03:00  INFO 34625 --- [money-manager] [           main] com.demo.config.SecurityConfigTest       : Started SecurityConfigTest in 3.457 seconds (process running for 4.006)
 ]]></system-out>
   </testcase>
-  <testcase name="findByEmailError" classname="com.demo.repositories.UserRepositoryTest" time="0.004">
-    <system-out><![CDATA[Hibernate: select u1_0.id,u1_0.email,u1_0.name,u1_0.password from app_user u1_0 where u1_0.email=?
-]]></system-out>
-  </testcase>
+  <testcase name="privateEndpointAndAuthorized" classname="com.demo.config.SecurityConfigTest" time="0.019"/>
+  <testcase name="privateEndpointAndNoAuthorization" classname="com.demo.config.SecurityConfigTest" time="0.005"/>
 </testsuite>

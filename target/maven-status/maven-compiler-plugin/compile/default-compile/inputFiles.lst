@@ -1,14 +1,28 @@
-C:\Users\O Padrinho\Documents\GitHub\MoneyManager\money-manager\src\main\java\com\demo\controller\UserController.java
-C:\Users\O Padrinho\Documents\GitHub\MoneyManager\money-manager\src\main\java\com\demo\dto\InternTransferRequestDTO.java
-C:\Users\O Padrinho\Documents\GitHub\MoneyManager\money-manager\src\main\java\com\demo\dto\UserRequestDTO.java
-C:\Users\O Padrinho\Documents\GitHub\MoneyManager\money-manager\src\main\java\com\demo\dto\UserResponseDTO.java
-C:\Users\O Padrinho\Documents\GitHub\MoneyManager\money-manager\src\main\java\com\demo\model\Card.java
-C:\Users\O Padrinho\Documents\GitHub\MoneyManager\money-manager\src\main\java\com\demo\model\Expense.java
-C:\Users\O Padrinho\Documents\GitHub\MoneyManager\money-manager\src\main\java\com\demo\model\Installment.java
-C:\Users\O Padrinho\Documents\GitHub\MoneyManager\money-manager\src\main\java\com\demo\model\Investment.java
-C:\Users\O Padrinho\Documents\GitHub\MoneyManager\money-manager\src\main\java\com\demo\model\User.java
-C:\Users\O Padrinho\Documents\GitHub\MoneyManager\money-manager\src\main\java\com\demo\model\Wallet.java
-C:\Users\O Padrinho\Documents\GitHub\MoneyManager\money-manager\src\main\java\com\demo\MoneyManagerApplication.java
-C:\Users\O Padrinho\Documents\GitHub\MoneyManager\money-manager\src\main\java\com\demo\repository\UserRepository.java
-C:\Users\O Padrinho\Documents\GitHub\MoneyManager\money-manager\src\main\java\com\demo\service\UserService.java
-C:\Users\O Padrinho\Documents\GitHub\MoneyManager\money-manager\src\main\java\com\demo\service\UserServiceInterface.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/MoneyManagerApplication.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/config/SecurityConfig.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/controller/AuthController.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/controller/UserController.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/dto/CardResponseDTO.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/dto/InternTransferRequestDTO.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/dto/InvestmentResponseDTO.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/dto/RecoveryJwtTokenRequestDTO.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/dto/RecoveryUserRequestDTO.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/dto/UserRequestDTO.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/dto/UserResponseDTO.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/dto/UserSignInRequestDTO.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/dto/UserSignUpRequestDTO.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/dto/WalletResponseDTO.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/model/Card.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/model/Expense.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/model/Installment.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/model/Investment.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/model/Role.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/model/RoleName.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/model/User.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/model/Wallet.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/repository/UserRepository.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/security/JwtTokenServiceImpl.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/security/UserAuthenticationFilter.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/security/UserDetailsImpl.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/service/UserServiceImpl.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/service/UserServiceInterface.java
