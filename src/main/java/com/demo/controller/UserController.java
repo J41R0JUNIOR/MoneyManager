@@ -53,7 +53,8 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 //    Just using for tests, don't forget to remove in the final application
-    @GetMapping("/deleteAll")
+//    @GetMapping("/deleteAll")
+    @DeleteMapping("/deleteAll")
     public ResponseEntity<Void> deleteAll() {
         service.deleteAll();
         return ResponseEntity.status(HttpStatus.OK).build();

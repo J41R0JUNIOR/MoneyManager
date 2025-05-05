@@ -1,6 +1,8 @@
 package com.demo.services;
 
 import com.demo.dto.InternTransferRequestDTO;
+import com.demo.dto.UserRequestDTO;
+import com.demo.dto.UserResponseDTO;
 import com.demo.model.Card;
 import com.demo.model.User;
 import com.demo.model.Wallet;
@@ -15,6 +17,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -33,12 +36,12 @@ public class UserServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
     @DisplayName("Should make a transaction successfully")
-    void transactionBetweenSelfWalletSuccess() throws Exception {
+     void transactionBetweenSelfWalletSuccess() throws Exception {
         User userMock = createMockUser();
 
         Wallet walletMock1 = createMockWallet(userMock, 1L);
@@ -96,12 +99,11 @@ public class UserServiceImplTest {
         );
     }
 
-
     private Wallet createMockWallet(User user, Long id) {
         return new Wallet(id, user, "WalletMock", null);
     }
 
     private Card createMockCard(Wallet wallet, Long id, float amount) {
-        return new Card(id, wallet, "credito", 100.0f, amount, "20", null);
+        return new Card(id, wallet, "credit", 100.0f, amount, "20", null);
     }
 }

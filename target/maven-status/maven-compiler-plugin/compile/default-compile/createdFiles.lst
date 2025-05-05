@@ -10,7 +10,7 @@ com\demo\model\Investment.class
 com\demo\model\RoleName.class
 com\demo\repository\UserRepository.class
 com\demo\model\Role$RoleBuilder.class
-com\demo\service\UserDetailsServiceImpl.class
+com\demo\security\UserDetailsImpl$UserDetailsServiceImpl.class
 com\demo\model\User.class
 com\demo\dto\CardResponseDTO.class
 com\demo\security\UserAuthenticationFilter.class
