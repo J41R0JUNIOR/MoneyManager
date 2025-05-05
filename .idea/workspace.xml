@@ -56,47 +56,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.SecurityConfigTest.executor": "Run",
-    "JUnit.SecurityConfigTest.getMessageWithMockUserCustomUser.executor": "Run",
-    "JUnit.SecurityConfigTest.messageWhenAuthenticated.executor": "Run",
-    "JUnit.SecurityConfigTest.messageWhenNotAuthenticated.executor": "Run",
-    "JUnit.SecurityConfigTest.messageWhenPublicEndpointAccessed.executor": "Run",
-    "JUnit.SecurityConfigTest.privateEndpointAndAuthorized.executor": "Run",
-    "JUnit.SecurityConfigTest.test.executor": "Run",
-    "JUnit.SecurityConfigTest.testPublicEndpoint_authPathIsAccessible.executor": "Run",
-    "JUnit.SecurityConfigTest.testPublicEndpoint_userGetAllIsAccessible.executor": "Run",
-    "JUnit.UserRepositoryTest.createDuplicateUser.executor": "Run",
-    "JUnit.UserRepositoryTest.executor": "Run",
-    "JUnit.UserServiceImplTest.createDuplicateUser.executor": "Run",
-    "JUnit.UserServiceImplTest.createDuplicateUserError.executor": "Run",
-    "JUnit.UserServiceImplTest.transactionBetweenSelfWalletSuccess.executor": "Run",
-    "Maven.demo [package].executor": "Run",
-    "Maven.demo [test].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.MoneyManagerApplication.executor": "Run",
-    "git-widget-placeholder": "AuthenticationTests",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.SecurityConfigTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SecurityConfigTest.getMessageWithMockUserCustomUser.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SecurityConfigTest.messageWhenAuthenticated.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SecurityConfigTest.messageWhenNotAuthenticated.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SecurityConfigTest.messageWhenPublicEndpointAccessed.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SecurityConfigTest.privateEndpointAndAuthorized.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SecurityConfigTest.test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SecurityConfigTest.testPublicEndpoint_authPathIsAccessible.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SecurityConfigTest.testPublicEndpoint_userGetAllIsAccessible.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserRepositoryTest.createDuplicateUser.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.createDuplicateUser.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.createDuplicateUserError.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.transactionBetweenSelfWalletSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.demo [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.demo [test].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.MoneyManagerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;AuthenticationTests&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SecurityConfigTest.privateEndpointAndAuthorized">
+  <component name="RunManager" selected="JUnit.SecurityConfigTest">
     <configuration name="SecurityConfigTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -108,38 +108,6 @@
       <option name="PACKAGE_NAME" value="com.demo.config" />
       <option name="MAIN_CLASS_NAME" value="com.demo.config.SecurityConfigTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SecurityConfigTest.messageWhenAuthenticated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.demo.config.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.demo.config" />
-      <option name="MAIN_CLASS_NAME" value="com.demo.config.SecurityConfigTest" />
-      <option name="METHOD_NAME" value="messageWhenAuthenticated" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SecurityConfigTest.messageWhenNotAuthenticated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.demo.config.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.demo.config" />
-      <option name="MAIN_CLASS_NAME" value="com.demo.config.SecurityConfigTest" />
-      <option name="METHOD_NAME" value="messageWhenNotAuthenticated" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -176,6 +144,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SecurityConfigTest.privateEndpointAndNoAuthorization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.demo.config.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.demo.config" />
+      <option name="MAIN_CLASS_NAME" value="com.demo.config.SecurityConfigTest" />
+      <option name="METHOD_NAME" value="privateEndpointAndNoAuthorization" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SecurityConfigTest.publicEndpoint" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.demo.config.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.demo.config" />
+      <option name="MAIN_CLASS_NAME" value="com.demo.config.SecurityConfigTest" />
+      <option name="METHOD_NAME" value="publicEndpoint" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MoneyManagerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="demo" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.demo.MoneyManagerApplication" />
@@ -185,11 +185,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SecurityConfigTest.privateEndpointAndAuthorized" />
-        <item itemvalue="JUnit.SecurityConfigTest.messageWhenPublicEndpointAccessed" />
-        <item itemvalue="JUnit.SecurityConfigTest.messageWhenNotAuthenticated" />
         <item itemvalue="JUnit.SecurityConfigTest" />
-        <item itemvalue="JUnit.SecurityConfigTest.messageWhenAuthenticated" />
+        <item itemvalue="JUnit.SecurityConfigTest.privateEndpointAndAuthorized" />
+        <item itemvalue="JUnit.SecurityConfigTest.privateEndpointAndNoAuthorization" />
+        <item itemvalue="JUnit.SecurityConfigTest.publicEndpoint" />
+        <item itemvalue="JUnit.SecurityConfigTest.messageWhenPublicEndpointAccessed" />
       </list>
     </recent_temporary>
   </component>
