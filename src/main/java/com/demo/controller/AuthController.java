@@ -17,19 +17,11 @@ public class AuthController {
 
 	@Autowired
 	private UserServiceImpl userServiceImpl;
-	private final AuthenticationManager authenticationManager;
-
-	public AuthController(AuthenticationManager authenticationManager) {
-		this.authenticationManager = authenticationManager;
-	}
 
 	@PostMapping("/signIn")
 	public ResponseEntity<RecoveryJwtTokenRequestDTO> signIn(@RequestBody UserSignInRequestDTO userDTO) {
 		RecoveryJwtTokenRequestDTO token = userServiceImpl.authenticateUser(userDTO);
 		return new ResponseEntity<>(token, HttpStatus.OK);
-	}
-
-	public record LoginRequest(String username, String password) {
 	}
 
 	@PostMapping("/signUp")
@@ -42,10 +34,9 @@ public class AuthController {
 	public ResponseEntity<String> testUser(){
 		return new ResponseEntity<>("User authenticated successfully", HttpStatus.OK);
 	}
+
 	@GetMapping("/test/adm")
 	public ResponseEntity<String> testAdm(){
 		return new ResponseEntity<>("Adm authenticated successfully", HttpStatus.OK);
 	}
-
-
 }

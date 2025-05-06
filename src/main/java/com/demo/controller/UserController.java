@@ -3,20 +3,11 @@ package com.demo.controller;
 import java.util.List;
 import java.util.Optional;
 
-import com.demo.dto.InternTransferRequestDTO;
-import com.demo.dto.UserRequestDTO;
-import com.demo.dto.UserResponseDTO;
+import com.demo.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.demo.model.User;
 import com.demo.service.UserServiceImpl;
@@ -28,13 +19,12 @@ public class UserController {
     @Autowired
     private UserServiceImpl service;
 //    Change to get the user id from the AuthContext and not receiving it from body request
-    @PutMapping("")
+    @PatchMapping("")
     public ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO data) {
-        User newUser = new User(data);
-        service.updateUser(newUser);
+        service.updateUser(data);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
-//    Update to instead of using an id it deletes the self user of the authContext
+//    Update to instead of using an id it deletes the user of the authContext
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
@@ -63,6 +53,7 @@ public class UserController {
 //    Remember to create a TransferResponseDTO to show the transfer
     @PostMapping("/transferInternally")
     public ResponseEntity<?> transferMoneyToOtherWallet(@RequestBody InternTransferRequestDTO interTransferDTO) {
+
         try {
             service.selfWalletTransfer(interTransferDTO);
             return ResponseEntity.ok("Transfer successfully");

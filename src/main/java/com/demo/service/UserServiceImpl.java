@@ -3,10 +3,7 @@ package com.demo.service;
 import java.util.List;
 import java.util.Optional;
 import com.demo.config.SecurityConfig;
-import com.demo.dto.InternTransferRequestDTO;
-import com.demo.dto.RecoveryJwtTokenRequestDTO;
-import com.demo.dto.UserSignInRequestDTO;
-import com.demo.dto.UserSignUpRequestDTO;
+import com.demo.dto.*;
 import com.demo.model.*;
 import com.demo.security.JwtTokenServiceImpl;
 import com.demo.security.UserDetailsImpl;
@@ -14,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import com.demo.repository.UserRepository;
 
@@ -54,12 +52,33 @@ public class UserServiceImpl implements UserServiceInterface {
     }
     
     @Override
-    public void updateUser(User user){
+    public void updateUser(UserRequestDTO user){
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        linkWallet(user);
-        linkInvestment(user);
+        User userUpdate = userRepository.findUserByEmail(email).orElseThrow();
 
-        repository.save(user);
+        System.out.println("UserUpdate " +userUpdate);
+        System.out.println("User " + user);
+
+        if (user.wallets() != null) {
+            userUpdate.setWallets(user.wallets());
+            linkWallet(userUpdate);
+        }
+
+        if (user.investments() != null) {
+            userUpdate.setInvestments(user.investments());
+            linkInvestment(userUpdate);
+        }
+
+        if (user.password() != null && !user.password().isBlank()) {
+            String encodedPassword = securityConfig.passwordEncoder().encode(user.password());
+            userUpdate.setPassword(encodedPassword);
+        }
+
+        linkWallet(userUpdate);
+        linkInvestment(userUpdate);
+
+        repository.save(userUpdate);
     }
 
     private void linkWallet(User user) {
@@ -115,8 +134,10 @@ public class UserServiceImpl implements UserServiceInterface {
 
     @Override
     public void selfWalletTransfer(InternTransferRequestDTO transferDTO) throws Exception {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        Long id = userRepository.findUserByEmail(email).orElseThrow().getId();
 
-        Optional<User> user = this.findById(transferDTO.id());
+        Optional<User> user = this.findById(id);
 
         if (user.isEmpty() || user.get().getWallets().isEmpty()) {
             throw new Exception("No user found or wallet empty");
