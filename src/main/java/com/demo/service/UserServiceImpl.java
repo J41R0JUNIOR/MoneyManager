@@ -30,14 +30,17 @@ public class UserServiceImpl implements UserServiceInterface {
         User userUpdate = userRepository.findUserByEmail(email).orElseThrow();
 
         if (user.wallets() != null) {
-            userUpdate.setWallets(user.wallets());
+            userUpdate.getWallets().clear();
+            userUpdate.getWallets().addAll(user.wallets());
             linkWallet(userUpdate);
         }
 
         if (user.investments() != null) {
-            userUpdate.setInvestments(user.investments());
+            userUpdate.getInvestments().clear();
+            userUpdate.getInvestments().addAll(user.investments());
             linkInvestment(userUpdate);
         }
+
 
         if (user.password() != null && !user.password().isBlank()) {
             String encodedPassword = securityConfig.passwordEncoder().encode(user.password());
