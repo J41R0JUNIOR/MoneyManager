@@ -18,6 +18,9 @@ public class UserController {
 
     @Autowired
     private UserServiceImpl service;
+
+
+
 //    Change to get the user id from the AuthContext and not receiving it from body request
     @PatchMapping("")
     public ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO data) {

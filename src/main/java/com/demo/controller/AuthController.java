@@ -2,6 +2,7 @@ package com.demo.controller;
 
 import com.demo.dto.*;
 import com.demo.model.User;
+import com.demo.service.AuthServiceImpl;
 import com.demo.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,17 +17,17 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
 	@Autowired
-	private UserServiceImpl userServiceImpl;
+	private AuthServiceImpl authService;
 
 	@PostMapping("/signIn")
 	public ResponseEntity<RecoveryJwtTokenRequestDTO> signIn(@RequestBody UserSignInRequestDTO userDTO) {
-		RecoveryJwtTokenRequestDTO token = userServiceImpl.authenticateUser(userDTO);
+		RecoveryJwtTokenRequestDTO token = authService.authenticateUser(userDTO);
 		return new ResponseEntity<>(token, HttpStatus.OK);
 	}
 
 	@PostMapping("/signUp")
 	public ResponseEntity<String> signUp(@RequestBody UserSignUpRequestDTO userDTO){
-		userServiceImpl.createUser(userDTO);
+		authService.createUser(userDTO);
 		return new ResponseEntity<>("User created successfully", HttpStatus.CREATED);
 	}
 

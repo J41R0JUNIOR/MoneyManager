@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import com.demo.dto.InternTransferRequestDTO;
 import com.demo.dto.UserRequestDTO;
+import com.demo.dto.UserSignUpRequestDTO;
 import com.demo.model.User;
 
 public interface UserServiceInterface {
