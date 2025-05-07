@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("auth")
 public class AuthController {
 
-	private final AuthServiceImpl authService;
+	@Autowired
+	private AuthServiceImpl authService;
 
-	public AuthController(AuthServiceImpl authService) {
-		this.authService = authService;
-	}
 
 	@PostMapping("/signIn")
 	public ResponseEntity<RecoveryJwtTokenRequestDTO> signIn(@RequestBody UserSignInRequestDTO userDTO) {
