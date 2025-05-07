@@ -2,6 +2,7 @@ package com.demo.controller;
 
 import com.demo.dto.*;
 import com.demo.model.User;
+import com.demo.service.AuthServiceImpl;
 import com.demo.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,25 +17,17 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
 	@Autowired
-	private UserServiceImpl userServiceImpl;
-	private final AuthenticationManager authenticationManager;
-
-	public AuthController(AuthenticationManager authenticationManager) {
-		this.authenticationManager = authenticationManager;
-	}
+	private AuthServiceImpl authService;
 
 	@PostMapping("/signIn")
 	public ResponseEntity<RecoveryJwtTokenRequestDTO> signIn(@RequestBody UserSignInRequestDTO userDTO) {
-		RecoveryJwtTokenRequestDTO token = userServiceImpl.authenticateUser(userDTO);
+		RecoveryJwtTokenRequestDTO token = authService.authenticateUser(userDTO);
 		return new ResponseEntity<>(token, HttpStatus.OK);
-	}
-
-	public record LoginRequest(String username, String password) {
 	}
 
 	@PostMapping("/signUp")
 	public ResponseEntity<String> signUp(@RequestBody UserSignUpRequestDTO userDTO){
-		userServiceImpl.createUser(userDTO);
+		authService.createUser(userDTO);
 		return new ResponseEntity<>("User created successfully", HttpStatus.CREATED);
 	}
 
@@ -42,10 +35,9 @@ public class AuthController {
 	public ResponseEntity<String> testUser(){
 		return new ResponseEntity<>("User authenticated successfully", HttpStatus.OK);
 	}
+
 	@GetMapping("/test/adm")
 	public ResponseEntity<String> testAdm(){
 		return new ResponseEntity<>("Adm authenticated successfully", HttpStatus.OK);
 	}
-
-
 }
