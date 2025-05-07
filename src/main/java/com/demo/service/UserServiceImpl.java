@@ -41,14 +41,10 @@ public class UserServiceImpl implements UserServiceInterface {
             linkInvestment(userUpdate);
         }
 
-
         if (user.password() != null && !user.password().isBlank()) {
             String encodedPassword = securityConfig.passwordEncoder().encode(user.password());
             userUpdate.setPassword(encodedPassword);
         }
-
-        linkWallet(userUpdate);
-        linkInvestment(userUpdate);
 
         userRepository.save(userUpdate);
     }

@@ -13,8 +13,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.ArrayList;
@@ -39,55 +44,69 @@ public class UserServiceImplTest {
         MockitoAnnotations.openMocks(this);
     }
 
-//    @Test
-//    @DisplayName("Should make a transaction successfully")
-//     void transactionBetweenSelfWalletSuccess() throws Exception {
-//        User userMock = createMockUser();
-//
-//        Wallet walletMock1 = createMockWallet(userMock, 1L);
-//        Card cardMock1 = createMockCard(walletMock1, 1L, 10f);
-//
-//        Wallet walletMock2 = createMockWallet(userMock, 2L);
-//        Card cardMock2 = createMockCard(walletMock2, 2L, 0f);
-//
-//        walletMock1.setCards(List.of(cardMock1));
-//        walletMock2.setCards(List.of(cardMock2));
-//        userMock.setWallets(List.of(walletMock1, walletMock2));
-//
-//        when(repository.findById(1L)).thenReturn(Optional.of(userMock));
-//        when(repository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
-//
-//        service.selfWalletTransfer(new InternTransferRequestDTO(1L, 5, 1L, 2L, 1L, 2L));
-//
-//        assertEquals(5f, cardMock1.getAmount());
-//        assertEquals(5f, cardMock2.getAmount());
-//    }
+    @Test
+    @DisplayName("Should make a transaction successfully")
+    void transactionBetweenSelfWalletSuccess() throws Exception {
+        User userMock = createMockUser();
 
-//    @Test
-//    @DisplayName("Should throw Exception when no sufficient money")
-//    void transactionBetweenSelfWalletSError() throws Exception {
-//        User userMock = createMockUser();
-//
-//        Wallet walletMock1 = createMockWallet(userMock, 1L);
-//        Card cardMock1 = createMockCard(walletMock1, 1L, 10f);
-//
-//        Wallet walletMock2 = createMockWallet(userMock, 2L);
-//        Card cardMock2 = createMockCard(walletMock2, 2L, 0f);
-//
-//        walletMock1.setCards(List.of(cardMock1));
-//        walletMock2.setCards(List.of(cardMock2));
-//        userMock.setWallets(List.of(walletMock1, walletMock2));
-//
-//        when(repository.findById(1L)).thenReturn(Optional.of(userMock));
-//        when(repository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
-//
-//        service.selfWalletTransfer(new InternTransferRequestDTO(1L, 15, 1L, 2L, 1L, 2L));
-//
-//        assertEquals(10f, cardMock1.getAmount());
-//        assertEquals(0f, cardMock2.getAmount());
-//    }
+        Wallet walletMock1 = createMockWallet(userMock, 1L);
+        Card cardMock1 = createMockCard(walletMock1, 1L, 10f);
+
+        Wallet walletMock2 = createMockWallet(userMock, 2L);
+        Card cardMock2 = createMockCard(walletMock2, 2L, 0f);
+
+        walletMock1.setCards(List.of(cardMock1));
+        walletMock2.setCards(List.of(cardMock2));
+        userMock.setWallets(List.of(walletMock1, walletMock2));
+
+        when(repository.findUserByEmail("userMock@gmail.com")).thenReturn(Optional.of(userMock));
+        when(repository.findById(1L)).thenReturn(Optional.of(userMock));
+        when(repository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
+
+
+        service.selfWalletTransfer(new InternTransferRequestDTO(5f, 1L, 2L, 1L, 2L));
+
+        assertEquals(5f, cardMock1.getAmount());
+        assertEquals(5f, cardMock2.getAmount());
+
+        SecurityContextHolder.clearContext();
+    }
+
+    @Test
+    @DisplayName("Should throw Exception when no sufficient money")
+    void transactionBetweenSelfWalletSError() throws Exception {
+        User userMock = createMockUser();
+
+        Wallet walletMock1 = createMockWallet(userMock, 1L);
+        Card cardMock1 = createMockCard(walletMock1, 1L, 10f);
+
+        Wallet walletMock2 = createMockWallet(userMock, 2L);
+        Card cardMock2 = createMockCard(walletMock2, 2L, 0f);
+
+        walletMock1.setCards(List.of(cardMock1));
+        walletMock2.setCards(List.of(cardMock2));
+        userMock.setWallets(List.of(walletMock1, walletMock2));
+
+        when(repository.findUserByEmail("userMock@gmail.com")).thenReturn(Optional.of(userMock));
+        when(repository.findById(1L)).thenReturn(Optional.of(userMock));
+        when(repository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
+
+        service.selfWalletTransfer(new InternTransferRequestDTO(100f, 1L, 2L, 1L, 2L));
+
+        assertEquals(10f, cardMock1.getAmount());
+        assertEquals(0f, cardMock2.getAmount());
+
+        SecurityContextHolder.clearContext();
+    }
+
 
     private User createMockUser() {
+        Authentication authentication = Mockito.mock(Authentication.class);
+        SecurityContext securityContext = Mockito.mock(SecurityContext.class);
+        Mockito.when(securityContext.getAuthentication()).thenReturn(authentication);
+        Mockito.when(authentication.getName()).thenReturn("userMock@gmail.com");
+        SecurityContextHolder.setContext(securityContext);
+
         return new User(
                 1L,
                 "userMock@gmail.com",
@@ -97,6 +116,8 @@ public class UserServiceImplTest {
                 List.of(),
                 List.of()
         );
+
+
     }
 
     private Wallet createMockWallet(User user, Long id) {
