@@ -24,5 +24,7 @@
 /Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/security/JwtTokenServiceImpl.java
 /Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/security/UserAuthenticationFilter.java
 /Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/security/UserDetailsImpl.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/service/AuthServiceImpl.java
+/Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/service/AuthServiceInterface.java
 /Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/service/UserServiceImpl.java
 /Users/thegodfatherjunior/Documents/GitHub/MoneyManager/src/main/java/com/demo/service/UserServiceInterface.java

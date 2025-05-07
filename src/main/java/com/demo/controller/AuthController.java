@@ -19,6 +19,7 @@ public class AuthController {
 	@Autowired
 	private AuthServiceImpl authService;
 
+
 	@PostMapping("/signIn")
 	public ResponseEntity<RecoveryJwtTokenRequestDTO> signIn(@RequestBody UserSignInRequestDTO userDTO) {
 		RecoveryJwtTokenRequestDTO token = authService.authenticateUser(userDTO);
