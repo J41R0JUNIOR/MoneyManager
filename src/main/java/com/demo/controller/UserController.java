@@ -20,7 +20,7 @@ public class UserController {
     private UserServiceImpl service;
 
 
-    
+
     @PatchMapping("")
     public ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO data) {
         service.updateUser(data);

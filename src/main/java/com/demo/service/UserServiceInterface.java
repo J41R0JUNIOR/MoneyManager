@@ -19,5 +19,4 @@ public interface UserServiceInterface {
 
     Optional<User> findById(Long id);
 
-    void selfWalletTransfer(InternTransferRequestDTO transferDTO) throws Exception;
 }
