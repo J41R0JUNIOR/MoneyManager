@@ -49,56 +49,7 @@ public class UserServiceImpl implements UserServiceInterface {
         userRepository.save(userUpdate);
     }
 
-    @Override
-    public void selfWalletTransfer(InternTransferRequestDTO transferDTO) throws Exception {
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        Long id = userRepository.findUserByEmail(email).orElseThrow().getId();
 
-        Optional<User> user = this.findById(id);
-
-        if (user.isEmpty() || user.get().getWallets().isEmpty()) {
-            throw new Exception("No user found or wallet empty");
-        }
-
-        Wallet senderWallet = null;
-        Wallet receiverWallet = null;
-
-        for (Wallet wallet : user.get().getWallets()) {
-            if (wallet.getId().equals(transferDTO.walletSenderId())) {
-                senderWallet = wallet;
-            } else if (wallet.getId().equals(transferDTO.walletReceiverId())) {
-                receiverWallet = wallet;
-            }
-        }
-
-        if (senderWallet == null || receiverWallet == null) {
-            throw new Exception("Error finding wallets");
-        }
-
-        Card cardSender = null;
-        Card cardReceiver = null;
-
-        for (Card card : senderWallet.getCards()) {
-            if (card.getId().equals(transferDTO.cardSenderId())) {
-                cardSender = card;
-            }
-        }
-        for (Card card : receiverWallet.getCards()) {
-            if (card.getId().equals(transferDTO.cardReceiverId())) {
-                cardReceiver = card;
-            }
-        }
-
-        if (cardSender == null || cardReceiver == null) {
-            throw new Exception("Error finding cards");
-        }
-
-        if (cardSender.getAmount() >= transferDTO.amount()){
-            cardSender.decrementAmount(transferDTO.amount());
-            cardReceiver.incrementAmount(transferDTO.amount());
-            userRepository.save(user.get());
-        }
-    }
 
     private void linkWallet(User user) {
         if (user.getWallets() == null) {

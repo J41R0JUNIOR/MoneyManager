@@ -1,4 +1,4 @@
-com/demo/security/UserDetailsImpl$UserDetailsServiceImpl.class
-com/demo/security/JwtTokenServiceImpl.class
-com/demo/security/UserAuthenticationFilter.class
-com/demo/security/UserDetailsImpl.class
+com\demo\security\UserDetailsImpl$UserDetailsServiceImpl.class
+com\demo\security\UserAuthenticationFilter.class
+com\demo\security\UserDetailsImpl.class
+com\demo\security\JwtTokenServiceImpl.class
